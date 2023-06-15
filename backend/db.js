@@ -2,7 +2,7 @@
 // //so use mongoose
 
 const mongoose = require('mongoose');
-const mongoURI = "mongodb://127.0.0.1:27017/?directConnection=true";
+const mongoURI = "mongodb://127.0.0.1:27017/notebook?directConnection=true";
 
 const connectToMongo = async () => {
     try {
