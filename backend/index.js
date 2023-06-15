@@ -6,6 +6,8 @@ connectToMongo();
 const app = express()
 const port = 3000
 
+app.use(express.json())
+
 // app.get('/api/login', (req, res) => { //get hello suyog  after typing http://locahost:3000/api/login
 //     res.send('Hello Suyog!')
 // })
