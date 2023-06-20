@@ -56,6 +56,9 @@ router.put('/updatenote/:id', fetchuser,
 
         const { title, description, tag } = req.body
         //create a newNote object
+        try {
+
+
         const newNote = {};
         if (title) { newNote.title = title };
         if (description) { newNote.description = description };
@@ -71,8 +74,12 @@ router.put('/updatenote/:id', fetchuser,
         note = await Note.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: true })
 
         res.json({ note })
-    })
 
+} catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error  occured");
+}
+    })
 
 
 //route 4: Delete an existing Note using : delete "api/notes/deletenote" .Login required
@@ -80,8 +87,9 @@ router.put('/updatenote/:id', fetchuser,
 router.delete('/deletenote/:id', fetchuser,
     async (req, res) => {
 
-        const { title, description, tag } = req.body
 
+
+        try {
 
 
         //find the note to be updated and update it
@@ -96,6 +104,12 @@ router.delete('/deletenote/:id', fetchuser,
         note = await Note.findByIdAndDelete(req.params.id)
 
         res.json({ "Success": "Your note has been deleted", note: note })
+
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Internal server error  occured");
+        }
+
     })
 
 module.exports = router
