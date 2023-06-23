@@ -1,10 +1,11 @@
 //rafce
 import Notes from './Notes'
-const Home = () => {
-
+//import Alert from './Alert'
+const Home = (props) => {
+    const { showAlert } = props
     return (
         <div>
-            <Notes />
+            <Notes showAlert={showAlert} />
         </div>
     )
 }
